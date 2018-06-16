@@ -6,7 +6,8 @@ import java.util.stream.Stream;
 public class QuickSort {
 
 	public static void main(String[] args) {
-		Integer[] ar = new Integer[] { 122, 1, 3, 2, 5, 6, 4, 4, 8, 9 };
+		//Integer[] ar = new Integer[] { 122, 1, 3, 2, 5, 6, 4, 4, 8, 9 };
+		Integer[] ar = new Integer[]{1, 4, 2, 4, 2, 4, 1, 2, 4, 1, 2, 2, 2, 2, 4, 1, 4, 4, 4};
 		new QuickSort().quickSort(ar);
 		System.out.println(Stream.of(ar).map(String::valueOf).collect(Collectors.joining(", ")));
 	}
