@@ -8,15 +8,15 @@ import java.util.concurrent.FutureTask;
 public class Executor {
 
 	public static void main(String[] args) {
-		 ExecutorService es = Executors.newCachedThreadPool();
-		 es.submit(new Callable<Integer>() {
+		ExecutorService es = Executors.newCachedThreadPool();
+		es.submit(new Callable<Integer>() {
 
 			@Override
 			public Integer call() throws Exception {
 				// TODO Auto-generated method stub
 				return null;
 			}
-			 
+
 		});
 
 		FutureTask f = new FutureTask<>(new Callable<String>() {
@@ -26,8 +26,8 @@ public class Executor {
 				// TODO Auto-generated method stub
 				return null;
 			}
-		}) ;
-		Thread t = new Thread(f); 
+		});
+		Thread t = new Thread(f);
 	}
 
 }

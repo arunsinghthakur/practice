@@ -49,13 +49,15 @@ public class CircularQueue<T> {
 
 	public static void main(String[] args) {
 		CircularQueue<Integer> q = new CircularQueue<>(Integer.class, 3);
-		
-		q.enqueue(1);q.enqueue(22); q.enqueue(221); 
-		
+
+		q.enqueue(1);
+		q.enqueue(22);
+		q.enqueue(221);
+
 		System.out.println(q.dequeue());
 		System.out.println(q.dequeue());
 		System.out.println(q.dequeue());
-		//System.out.println(q.dequeue());
+		// System.out.println(q.dequeue());
 	}
 
 }

@@ -3,6 +3,7 @@ package joker;
 public class OddEven {
 	int i = 1;
 	int max = 100;
+
 	public static void main(String[] args) {
 		OddEven oe = new OddEven();
 		Thread oddt = new Thread(new Odd(oe), "Odd thread- ");

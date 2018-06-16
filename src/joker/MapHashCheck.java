@@ -24,14 +24,11 @@ class A {
 		this.j = j;
 	}
 
-	/*@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + i;
-		result = prime * result + ((j == null) ? 0 : j.hashCode());
-		return result;
-	}*/
+	/*
+	 * @Override public int hashCode() { final int prime = 31; int result = 1;
+	 * result = prime * result + i; result = prime * result + ((j == null) ? 0 :
+	 * j.hashCode()); return result; }
+	 */
 
 	@Override
 	public boolean equals(Object obj) {
@@ -52,9 +49,7 @@ class A {
 		return true;
 	}
 
-	
-	/*@Override
-	public int hashCode() {
-		return -1;
-	}*/
+	/*
+	 * @Override public int hashCode() { return -1; }
+	 */
 }
