@@ -1,4 +1,4 @@
-package joker;
+package joker.ds.problem;
 
 public class Fibonacci {
 
