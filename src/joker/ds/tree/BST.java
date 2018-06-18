@@ -15,14 +15,33 @@ public class BST {
 
 		System.out.println("in order :");
 		bst.inOrderTravsel();
+		System.out.println("------------------------------------------------------------");
 
 		System.out.println("pre order :");
 		bst.preOrderTravsel();
+		System.out.println("------------------------------------------------------------");
 
 		System.out.println("post order :");
 		bst.postOrderTravsel();
+		System.out.println("------------------------------------------------------------");
 
 		System.out.println("Is a BST :" + bst.checkForBST());
+		System.out.println("------------------------------------------------------------");
+
+		System.out.println("minimum in BST :" + bst.minimumInBST());
+		System.out.println("------------------------------------------------------------");
+
+		System.out.println("Delete 42 from BST");
+		bst.delete(42);
+		System.out.println("After 42 deletion in order");
+		bst.inOrderTravsel();
+		System.out.println("------------------------------------------------------------");
+
+		System.out.println("Delete 12 from BST");
+		bst.delete(12);
+		System.out.println("After 12 deletion in order");
+		bst.inOrderTravsel();
+		System.out.println("------------------------------------------------------------");
 	}
 
 	public void postOrderTravsel() {
@@ -90,6 +109,45 @@ public class BST {
 			return false;
 		}
 		return checkForBST(r.getLeft(), min, r.getData()) && checkForBST(r.getRight(), r.getData(), max);
+	}
+
+	public void delete(int data) {
+		root = delete(root, data);
+	}
+
+	public Node delete(Node r, int data) {
+		if (null == r) {
+			return r;
+		}
+		if (data < r.getData()) {
+			r.left = delete(r.getLeft(), data);
+		} else if (data > r.getData()) {
+			r.right = delete(r.getRight(), data);
+		} else {
+			if (r.getLeft() == null) {
+				return r.getRight();
+			}
+			if (r.getRight() == null) {
+				return r.getLeft();
+			}
+
+			r.data = minimumInBST(r.getRight());
+			r.right = delete(r.right, r.data);
+		}
+
+		return r;
+	}
+
+	public int minimumInBST() {
+		return minimumInBST(root);
+	}
+
+	public int minimumInBST(Node r) {
+		while (r.getLeft() != null) {
+			r = r.getLeft();
+		}
+		return r.getData();
+
 	}
 }
 
