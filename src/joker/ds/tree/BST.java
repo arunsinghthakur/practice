@@ -21,6 +21,8 @@ public class BST {
 
 		System.out.println("post order :");
 		bst.postOrderTravsel();
+
+		System.out.println("Is a BST :" + bst.checkForBST());
 	}
 
 	public void postOrderTravsel() {
@@ -76,6 +78,19 @@ public class BST {
 
 	}
 
+	public boolean checkForBST() {
+		return checkForBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	private boolean checkForBST(Node r, int min, int max) {
+		if (null == r) {
+			return true;
+		}
+		if (r.getData() < min || r.getData() > max) {
+			return false;
+		}
+		return checkForBST(r.getLeft(), min, r.getData()) && checkForBST(r.getRight(), r.getData(), max);
+	}
 }
 
 class Node {
