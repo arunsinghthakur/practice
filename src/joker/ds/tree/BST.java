@@ -35,12 +35,6 @@ public class BST {
 		System.out.println("minimum in BST :" + bst.minimumInBST());
 		System.out.println("------------------------------------------------------------");
 
-		System.out.println("Delete 42 from BST");
-		bst.delete(42);
-		System.out.println("After 42 deletion in order");
-		bst.inOrderTravsel();
-		System.out.println("------------------------------------------------------------");
-
 		System.out.println("Delete 12 from BST");
 		bst.delete(12);
 		System.out.println("After 12 deletion in order");
@@ -219,7 +213,7 @@ public class BST {
 	}
 
 	private int countNodeInBST(Node root) {
-		Queue<Node> q = new PriorityQueue<>();
+		Queue<Node> q = new LinkedList<>();
 		if (null == root) {
 			return 0;
 		}
