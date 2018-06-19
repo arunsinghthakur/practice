@@ -81,6 +81,16 @@ public class BST {
 		System.out.println("BST 2 data : ");
 		bst2.inOrderTravsel(root2);
 		System.out.println("------------------------------------------------------------");
+
+		System.out.println(" Before Mirro BST : ");
+		bst.inOrderTravsel();
+		bst.mirrorBST();
+		System.out.println(" After Mirro BST : ");
+		bst.inOrderTravsel();
+		System.out.println("Back to normal:");
+		bst.mirrorBST();
+		bst.inOrderTravsel();
+		System.out.println("------------------------------------------------------------");
 	}
 
 	public void postOrderTravsel() {
@@ -175,6 +185,21 @@ public class BST {
 		}
 
 		return r;
+	}
+
+	public void mirrorBST() {
+		mirrorBST(root);
+	}
+
+	private void mirrorBST(Node r) {
+		if (null == r) {
+			return;
+		}
+		mirrorBST(r.getLeft());
+		mirrorBST(r.getRight());
+		Node temp = r.getLeft();
+		r.setLeft(r.getRight());
+		r.setRight(temp);
 	}
 
 	public int minimumInBST() {
