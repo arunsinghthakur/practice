@@ -1,5 +1,9 @@
 package joker.ds.tree;
 
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class BST {
 
 	Node root;
@@ -41,6 +45,41 @@ public class BST {
 		bst.delete(12);
 		System.out.println("After 12 deletion in order");
 		bst.inOrderTravsel();
+		System.out.println("------------------------------------------------------------");
+
+		System.out.println("Number of Node in BST - " + bst.countNodeInBST());
+		System.out.println("------------------------------------------------------------");
+
+		BST bst1 = new BST();
+		BST bst2 = new BST();
+		Node root1 = null, root2 = null;
+		root1 = bst1.insert(root1, 12);
+		root1 = bst1.insert(root1, 1112);
+		root1 = bst1.insert(root1, 132);
+		root1 = bst1.insert(root1, 182);
+		root1 = bst1.insert(root1, 1323);
+
+		root2 = bst2.insert(root2, 12);
+		root2 = bst2.insert(root2, 1112);
+		root2 = bst2.insert(root2, 132);
+		root2 = bst2.insert(root2, 182);
+		root2 = bst2.insert(root2, 1323);
+
+		System.out.println("Check if BST are identical  - " + bst.checkIfBSTEqual(root1, root2));
+		System.out.println("Check if BST are identical recursive  - " + bst.checkIfBSTEqualRecursive(root1, root2));
+		System.out.println("BST 1 data : ");
+		bst1.inOrderTravsel(root1);
+		System.out.println("BST 2 data : ");
+		bst2.inOrderTravsel(root2);
+
+		root2 = bst.delete(root2, 12);
+
+		System.out.println("Check if BST are identical after delete node 12 from BST2 - " + bst.checkIfBSTEqual(root1, root2));
+		System.out.println("Check if BST are identical after delete node 12 from BST2 recursive- " + bst.checkIfBSTEqualRecursive(root1, root2));
+		System.out.println("BST 1 data : ");
+		bst1.inOrderTravsel(root1);
+		System.out.println("BST 2 data : ");
+		bst2.inOrderTravsel(root2);
 		System.out.println("------------------------------------------------------------");
 	}
 
@@ -148,6 +187,74 @@ public class BST {
 		}
 		return r.getData();
 
+	}
+
+	public int countNodeInBST() {
+		return countNodeInBST(root);
+	}
+
+	private int countNodeInBST(Node root) {
+		Queue<Node> q = new PriorityQueue<>();
+		if (null == root) {
+			return 0;
+		}
+		q.add(root);
+		int count = 0;
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+			++count;
+			if (temp.getLeft() != null) {
+				q.add(temp.getLeft());
+			}
+			if (temp.getRight() != null) {
+				q.add(temp.getRight());
+			}
+		}
+		return count;
+	}
+
+	public boolean checkIfBSTEqual(Node root1, Node root2) {
+		Queue<Node> q1 = new LinkedList<>();
+		Queue<Node> q2 = new LinkedList<>();
+		if (null == root1 && null == root2) {
+			return true;
+		}
+		q1.add(root1);
+		q2.add(root2);
+		while (!q1.isEmpty() || !q2.isEmpty()) {
+			Node t1 = q1.poll();
+			Node t2 = q2.poll();
+			if (t1.getData() != t2.getData()) {
+				return false;
+			} else if ((t1.getLeft() == null && t2.getLeft() != null) || (t1.getLeft() != null && t2.getLeft() == null)) {
+				return false;
+			} else if ((t1.getRight() == null && t2.getRight() != null) || (t1.getRight() != null && t2.getRight() == null)) {
+				return false;
+			} else {
+				if ((t1.getLeft() != null && t2.getLeft() != null)) {
+					q1.add(t1.getLeft());
+					q2.add(t2.getLeft());
+				}
+				if ((t1.getRight() != null && t2.getRight() != null)) {
+					q1.add(t1.getRight());
+					q2.add(t2.getRight());
+				}
+			}
+		}
+		return true;
+	}
+
+	public boolean checkIfBSTEqualRecursive(Node root1, Node root2) {
+		if (null == root1 && null == root2) {
+			return true;
+		}
+		if (root1 != null && root2 != null) {
+			if (root1.getData() == root2.getData() && checkIfBSTEqualRecursive(root1.getLeft(), root2.getLeft())
+					&& checkIfBSTEqualRecursive(root1.getRight(), root2.getRight())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
 
