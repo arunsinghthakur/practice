@@ -1,7 +1,6 @@
 package joker.ds.tree;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class BST {
@@ -91,7 +90,7 @@ public class BST {
 		postOrderTravsel(root);
 	}
 
-	private void postOrderTravsel(Node r) {
+	public void postOrderTravsel(Node r) {
 		if (r != null) {
 			postOrderTravsel(r.getLeft());
 			postOrderTravsel(r.getRight());
@@ -103,7 +102,7 @@ public class BST {
 		preOrderTravsel(root);
 	}
 
-	private void preOrderTravsel(Node r) {
+	public void preOrderTravsel(Node r) {
 		if (r != null) {
 			System.out.println(r.getData());
 			preOrderTravsel(r.getLeft());
@@ -119,10 +118,10 @@ public class BST {
 		root = insert(root, data);
 	}
 
-	private Node insert(Node root, int data) {
+	public Node insert(Node root, int data) {
 		if (null == root) {
 			root = new Node(data);
-		} else if (data <= root.getData()) {
+		} else if (data < root.getData()) {
 			root.left = insert(root.getLeft(), data);
 		} else if (data > root.getData()) {
 			root.right = insert(root.getRight(), data);
@@ -131,7 +130,7 @@ public class BST {
 		return root;
 	}
 
-	private void inOrderTravsel(Node r) {
+	public void inOrderTravsel(Node r) {
 		if (r != null) {
 			inOrderTravsel(r.getLeft());
 			System.out.println(r.getData());
@@ -144,7 +143,7 @@ public class BST {
 		return checkForBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
-	private boolean checkForBST(Node r, int min, int max) {
+	public boolean checkForBST(Node r, int min, int max) {
 		if (null == r) {
 			return true;
 		}
@@ -185,7 +184,7 @@ public class BST {
 		mirrorBST(root);
 	}
 
-	private void mirrorBST(Node r) {
+	public void mirrorBST(Node r) {
 		if (null == r) {
 			return;
 		}
@@ -212,7 +211,7 @@ public class BST {
 		return countNodeInBST(root);
 	}
 
-	private int countNodeInBST(Node root) {
+	public int countNodeInBST(Node root) {
 		Queue<Node> q = new LinkedList<>();
 		if (null == root) {
 			return 0;

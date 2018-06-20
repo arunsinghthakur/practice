@@ -1,15 +1,15 @@
 package joker;
 
-public class Clone implements Cloneable{
-	
+public class Clone implements Cloneable {
+
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
+		// super.clone();
+		return "hello";
 	}
 
 	public static void main(String[] args) throws CloneNotSupportedException {
-		new Clone().clone();
-
+		System.out.println(new Clone().clone());
 	}
 
 }
