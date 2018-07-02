@@ -16,6 +16,9 @@ public class PreOrderToBST extends BST {
 
 		System.out.println("Check for valid preorder - { 12, 9, 8, 10, 15, 2 }" + bst.checkForValidPreOrder(new int[] { 12, 9, 8, 10, 15, 2 }));
 		System.out.println("------------------------------------------------------------");
+
+		System.out.println("Common ancester of { 12, 9, 8, 10, 15, 16 }, 12, 16 is" + bst.commonAncester(root, 12, 16).data);
+
 	}
 
 	public boolean checkForValidPreOrder(int[] a) {
@@ -56,5 +59,18 @@ public class PreOrderToBST extends BST {
 			}
 		}
 		return r;
+	}
+
+	public Node commonAncester(Node n, int e1, int e2) {
+		if (null == n) {
+			return null;
+		}
+		if (e1 < n.data && e2 < n.data) {
+			return commonAncester(n.left, e1, e2);
+		}
+		if (e1 > n.data && e2 > n.data) {
+			return commonAncester(n.right, e1, e2);
+		}
+		return n;
 	}
 }
