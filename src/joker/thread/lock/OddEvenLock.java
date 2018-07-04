@@ -1,4 +1,4 @@
-package joker.lock;
+package joker.thread.lock;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
