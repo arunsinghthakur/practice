@@ -21,8 +21,12 @@ public class Collections {
 		list.add(null);
 		set.add(null);
 		map.put(null, null);
+		map.put(null, "test");
+		System.out.println(map.get(null));
 		tset.add(null);
 		tmap.put(null, null);
+		
+		
 	}
 
 }
