@@ -1,16 +1,19 @@
 package joker;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapHashCheck {
 	public static void main(String[] args) {
-		Set<A> set = new HashSet<>();
-		set.add(new A(1, "A"));
-		set.add(new A(2, "B"));
-		set.add(new A(1, "A"));
+		Map<A, Integer> set = new HashMap<>();
+		A a = new A(2, "B");
+		set.put(new A(1, "A"), 1);
+		set.put(a, 2);
+		set.put(new A(1, "A"), 3);
 
 		System.out.println(set.size());
+		System.out.println(set.get(new A(1, "A")));
+		System.out.println(set.get(a));
 	}
 }
 
@@ -30,7 +33,7 @@ class A {
 	 * j.hashCode()); return result; }
 	 */
 
-	@Override
+	/*@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -47,9 +50,10 @@ class A {
 		} else if (!j.equals(other.j))
 			return false;
 		return true;
+	}*/
+
+	public int hashCode() {
+		return 1;
 	}
 
-	/*
-	 * @Override public int hashCode() { return -1; }
-	 */
 }
