@@ -14,6 +14,16 @@ public class Test extends AbstractTest{
 		List<String> l = new CopyOnWriteArrayList<>();
 
 	}
+	
+	String a(int a) {
+		return null;
+	}
+	String a(long a) {
+		return null;
+	}
+	String a(char a) {
+		return null;
+	}
 }
 
 abstract class AbstractTest {
