@@ -5,8 +5,9 @@ import java.util.List;
 
 public class NQueenProblem {
 
-    static List<List<String>> nQueen(int n) {
+    static List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
+        if(n <= 0) return result;
         char[][] board = init(n);
         placeQueen(board, 0, result);
         return result;
@@ -58,6 +59,6 @@ public class NQueenProblem {
     }
 
     public static void main(String[] args) {
-        System.out.print(nQueen(4));
+        System.out.print(solveNQueens(4));
     }
 }
