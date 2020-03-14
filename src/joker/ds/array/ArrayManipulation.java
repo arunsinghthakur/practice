@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Problem1 {
+public class ArrayManipulation {
     // Complete the arrayManipulation function below.
     static long arrayManipulation(int n, int[][] q) {
         long[] r = new long[n + 2];
